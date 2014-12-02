@@ -1,0 +1,5 @@
+Django==1.7.1
+django-bootstrap-toolkit==2.15.0
+gnureadline==6.3.3
+ipython==2.3.1
+wsgiref==0.1.2
