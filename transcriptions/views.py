@@ -6,7 +6,7 @@ from django.shortcuts import *
 # Create your views here.
 
 class AnnView(View):
-    template_name = "form.html"
+    template_name = "transcriptions/form.html"
     Model = None
     lang = None
     lang_label = None
@@ -14,24 +14,28 @@ class AnnView(View):
 
     def get(self, request):
 
-        elements = self.Model.objects.filter(annotated=False)
+        pending = self.Model.objects.filter(annotated=False)
+        skipped = self.Model.objects.filter(skipped=True)
 
-        if len(elements) == 0:
+        if len(pending) == 0 and len(skipped) == 0:
             return redirect('done')
         else:
-            f = self.Form(elements[0])
-            return render_to_response(self.template_name, {'form':f, 'layout':'horizontal', 'id':elements[0].id})
+            element = pending[0] if len(pending) > 0 else skipped[0]
+
+            f = self.Form(instance=element)
+            return render_to_response(self.template_name, {'form':f, 'layout':'horizontal', 'id':element.pk, 'audio':element.audio})
 
     def post(self, request):
         ann = elements = self.Model.objects.get(pk=request.POST['ann-id'])
         ann.annotated = True
+
         f = self.Form(request.POST, instance=ann)
 
         if f.is_valid():
             f.save()
-            return redirect(lang)
+            return redirect(self.lang)
         else:
-            return render_to_response(self.template_name, {'form':f, 'layout':'horizontal', 'id':ann.id})
+            return render_to_response(self.template_name, {'form':f, 'layout':'horizontal', 'id':ann.id, 'audio':ann.audio})
 
 
 class ENView(AnnView):

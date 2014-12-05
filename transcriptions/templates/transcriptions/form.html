@@ -1,20 +1,29 @@
 {% extends "transcriptions/base.html" %}
 {% load bootstrap_toolkit %}
+{% load staticfiles%}
 
 {% block content %}
 <center>Please , correct the transcription as necesary</center>
 <br>
   <form class="form-{{ layout }}" action="" method="post">
-        {% csrf_token %}
+        <center>
+          <audio controls autoplay id="utterance">
+            <source src="{% static audio %}" />
+          </audio>
+          <br />
+          <br />
         <input type="hidden" name="ann-id" value="{{id}}"></input>
         {{ form|as_bootstrap:layout }}
         {% if layout == "horizontal" %}
             <p class="form-actions">
-                <input type="submit" value="Submit" class="btn btn-primary">
+                <input type="submit" value="Submit" class="btn btn-primary" name="submit">
+                <input type="submit" value="Skip" class="btn btn-primary" name="skip">
             </p>
         {% else %}
-            <input type="submit" value="Submit" class="btn btn-primary">
+            <input type="submit" value="Submit" class="btn btn-primary" name="submit">
+            <input type="submit" value="Skip" class="btn btn-primary" name="skip">
         {% endif %}
+      </center>
     </form>
 </br>
 {% endblock %}
