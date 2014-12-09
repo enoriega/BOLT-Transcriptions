@@ -1,12 +1,12 @@
 import os
-from chunker.settings import *
+from bolt_transcriptions.settings import *
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
 TEMPLATE_DEBUG = False
 
-ALLOWED_HOSTS = ['localhost', 'uabolt.sista.arizona.edu']
+ALLOWED_HOSTS = ['localhost', 'b4.sista.arizona.edu']
 
 
 # Database
@@ -20,7 +20,7 @@ DATABASES = {
 
     'default': {
         'ENGINE': 'django.db.backends.mysql', 
-        'NAME': 'uabolt',
+        'NAME': 'bolt_transcriptions',
         'USER': 'enoriega',
         'PASSWORD': 'w7PxNoAojIWsDA',
         'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
@@ -31,7 +31,7 @@ DATABASES = {
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
 
-LANGUAGE_CODE = 'ar-iq'
+LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
 
@@ -42,4 +42,8 @@ USE_L10N = True
 USE_TZ = True
 
 # Dataset files directory
-DATASET_DIR = "%s/../dataset/" % BASE_DIR
+#DATASET_DIR = "%s/../dataset/" % BASE_DIR
+
+STATICFILES_DIRS = (
+    "/home/enoriega/UnivAriz-2/P3Testing_UnivAriz-2/",
+)

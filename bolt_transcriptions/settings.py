@@ -19,14 +19,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'fq9gld%6mb6#@vb583t0_-mz0lcomm+2ws=klf^5)ai_-!bqmv'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-TEMPLATE_DEBUG = True
-
-ALLOWED_HOSTS = []
-
-
 # Application definition
 
 INSTALLED_APPS = (
@@ -54,36 +46,11 @@ ROOT_URLCONF = 'bolt_transcriptions.urls'
 WSGI_APPLICATION = 'bolt_transcriptions.wsgi.application'
 
 
-# Database
+# Database definition is included in the production/dev settings file
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
-
-# Internationalization
-# https://docs.djangoproject.com/en/1.6/topics/i18n/
-
-LANGUAGE_CODE = 'en-us'
-
-TIME_ZONE = 'UTC'
-
-USE_I18N = True
-
-USE_L10N = True
-
-USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
+STATIC_ROOT='static/'
 STATIC_URL = '/audio/'
-
-STATICFILES_DIRS = (
-    "/Users/enoriega/BOLT/UnivAriz-2/P3Testing_UnivAriz-2",
-    '/var/www/static/',
-)

@@ -4,8 +4,8 @@ import os.path as pt
 import codecs
 #from annotations.models import ARAnnotation, ENAnnotation
 
-en_path = '../UnivAriz-2/P3Testing_UnivAriz-2.en.hyps'
-ar_path =  '../UnivAriz-2/P3Testing_UnivAriz-2.ia.hyps'
+en_path = '/home/enoriega/UnivAriz-2/P3Testing_UnivAriz-2.en.hyps'
+ar_path =  '/home/enoriega/UnivAriz-2/P3Testing_UnivAriz-2.ia.hyps'
 
 ar_fixture = 'ia_fixture.json'
 en_fixture = 'en_fixture.json'
